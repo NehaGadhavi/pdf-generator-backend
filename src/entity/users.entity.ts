@@ -1,19 +1,19 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('users')
-export class USers{
-    @PrimaryGeneratedColumn()
+export class USers extends BaseEntity{
+    @PrimaryGeneratedColumn({ comment: 'PK Auto Increment' })
     id: number;
 
-    @Column()
+    @Column({ nullable: false })
     name: string;
 
-    @Column()
+    @Column({ nullable: false })
     email: string;
 
-    @Column()
+    @Column({ nullable: false })
     phone: string;
 
-    @Column()
+    @Column({ default: null })
     address: string;
 }
