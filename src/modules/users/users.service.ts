@@ -33,6 +33,18 @@ export class UsersService {
     }
   }
 
+  async getUserInformation(id: number): GlobalResponseType {
+    try {
+      const user = await this.usersRepo.findOne({ where: { id } });
+      return ResponseMap({ user });
+    } catch (error) {
+      throw new HttpException(
+        error,
+        error.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      );
+    }
+  }
+
   async addUser(userInfo: AddUserDto): GlobalResponseType {
     try {
       const user = new USers();

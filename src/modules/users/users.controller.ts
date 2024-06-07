@@ -24,6 +24,11 @@ export class UsersController {
     return await this.usersService.getAllUsers();
   }
 
+  @Get(':id')
+  async getUserInformation(@Param('id') id: number) : GlobalResponseType {
+    return await this.usersService.getUserInformation(id);
+  }
+
   @Post('add')
   @UsePipes(ValidationPipe)
   async addUser(@Body() userInfo: AddUserDto): GlobalResponseType {
